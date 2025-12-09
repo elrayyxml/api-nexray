@@ -1,53 +1,33 @@
 {
   "name": "@nexray/api",
   "version": "1.0.0",
-  "description": "Official NexRay API Client Library for Node.js",
+  "description": "Official NexRay API Client - CJS & ESM Support",
   "main": "./index.js",
-  "module": "./lib/esm.js",
+  "module": "./src/esm.js",
   "exports": {
     ".": {
-      "import": "./lib/esm.js",
+      "import": "./src/esm.js",
       "require": "./index.js"
-    },
-    "./engine-requirements": {
-      "import": "./lib/engine-requirements.js",
-      "require": "./engine-requirements.js"
     }
   },
   "scripts": {
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "cp src/cjs.js lib/ && cp config.json lib/ && cp engine-requirements.js lib/engine-requirements.js",
-    "build:esm": "babel src/esm.js -o lib/esm.js --presets=@babel/preset-env && cp config.json lib/config.json",
-    "dev": "nodemon index.js",
-    "test": "node -e \"const nexray = require('./index.js'); console.log('✅ Package loaded successfully')\"",
-    "prepublishOnly": "npm run build"
+    "test": "node test-cjs.js && node test-esm.mjs"
   },
   "keywords": [
-    "nexray",
-    "api",
-    "client",
-    "indonesia",
-    "rest-api",
-    "http-client"
+    "nexray", 
+    "api", 
+    "client", 
+    "cjs", 
+    "esm"
   ],
-  "author": "NexRay",
+  "author": "ElrayyXml",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.6.0",
-    "form-data": "^4.0.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.23.0",
-    "@babel/core": "^7.23.0",
-    "@babel/preset-env": "^7.22.20",
-    "nodemon": "^3.0.1"
+    "axios": "latest"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ElrayyXml/nexray-api.git"
   },
-  "homepage": "https://nexray.web.id",
-  "engines": {
-    "node": ">=14.0.0"
-  }
+  "homepage": "https://nexray.web.id"
 }
