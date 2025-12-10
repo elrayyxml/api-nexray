@@ -75,7 +75,7 @@ const data = await nexray.get('/ai/gemini', {
               }
        );
        
-       console.log(data)
+       console.log(data);
 ```
 
 #### Response
@@ -97,4 +97,5 @@ const buffer = await nexray.getBuffer('/maker/brat', {
               text: 'Halo apa kabar...'
               }
        );
+       console.log(buffer);
 ```
