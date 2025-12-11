@@ -2,20 +2,13 @@
   "name": "api-nexray",
   "version": "1.0.1",
   "description": "NexRay API client",
-  "main": "./index.js",
-  "module": "./src/esm.js",
-  "exports": {
-    ".": {
-      "import": "./src/esm.js",
-      "require": "./index.js"
-    }
-  },
-  "scripts": {
-    "test": "node test-cjs.js && node test-esm.mjs"
-  },
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "keywords": [
     "nexray",
     "api",
+    "api-nexray",
+    "elrayyxml",
     "client",
     "cjs",
     "esm"
@@ -23,10 +16,13 @@
   "author": "ElrayyXml",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.13.2"
+    "axios": "^1.6.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   },
   "homepage": "https://www.npmjs.com/package/api-nexray"
 }
