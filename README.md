@@ -1,10 +1,3 @@
-Berikut adalah update untuk file README.md. Saya menambahkan bagian Configuration (untuk set Token/Timeout), POST Request, dan Error Handling agar dokumentasi lebih lengkap sesuai fitur kode yang sudah dibuat sebelumnya.
-
-code
-Markdown
-download
-content_copy
-expand_less
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
 <div align="center">
