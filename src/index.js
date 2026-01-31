@@ -1,4 +1,7 @@
 const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+const FormData = require('form-data');
 const config = require('./config.json');
 
 const options = {
@@ -45,12 +48,22 @@ const handleError = (error) => {
 
     if (error.response) {
         const status = error.response.status;
+        let data = error.response.data;
+
+        if (Buffer.isBuffer(data)) {
+            try {
+                data = JSON.parse(data.toString());
+            } catch (e) {
+                data = { message: error.message };
+            }
+        }
+
         if (status === 500) {
             result.error = '500 Internal Server Error - Server encountered an error';
         } else if (status === 400) {
             result.error = '400 Bad Request - Invalid parameters or missing required fields';
         } else {
-            result.error = error.response.data.message || error.message;
+            result.error = data.message || error.message;
         }
     } else {
         result.error = error.message || 'Network Error';
@@ -83,8 +96,33 @@ const nexray = {
 
     post: async (endpoint, data = {}) => {
         try {
-            const response = await client.post(formatEndpoint(endpoint), data);
-            return response.data;
+            const form = new FormData();
+            let isMultipart = false;
+
+            for (const key in data) {
+                const value = data[key];
+                if (Buffer.isBuffer(value)) {
+                    form.append(key, value, { filename: `nexray-${Date.now()}.jpg` });
+                    isMultipart = true;
+                } else if (typeof value === 'string' && fs.existsSync(value) && fs.statSync(value).isFile()) {
+                    form.append(key, fs.createReadStream(value), { filename: path.basename(value) });
+                    isMultipart = true;
+                } else {
+                    form.append(key, value);
+                }
+            }
+
+            const response = await client.post(formatEndpoint(endpoint), isMultipart ? form : data, {
+                headers: isMultipart ? form.getHeaders() : {},
+                responseType: 'arraybuffer'
+            });
+
+            const contentType = response.headers['content-type'] || '';
+            if (contentType.includes('application/json')) {
+                return JSON.parse(response.data.toString());
+            }
+
+            return Buffer.from(response.data);
         } catch (error) {
             return handleError(error);
         }
