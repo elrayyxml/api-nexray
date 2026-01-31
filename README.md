@@ -83,6 +83,8 @@ nexray.setOptions({
 
 #### Get Request
 ```ts
+import nexray from 'api-nexray';
+
 const data = await nexray.get('/ai/gemini', {
   text: 'Halo apa kabar...'
 });
@@ -101,6 +103,8 @@ console.log(data);
 
 #### Post Request
 ```ts
+import nexray from 'api-nexray';
+
 const response = await nexray.post('/ai/chatgpt', {
   text: 'Halo apa kabar...'
 });
@@ -108,6 +112,7 @@ const response = await nexray.post('/ai/chatgpt', {
 console.log(response);
 ```
 ```ts
+import nexray from 'api-nexray';
 import fs from 'fs';
 import path from 'path';
 
@@ -128,6 +133,8 @@ console.log(buffer);
 
 #### Get Buffer
 ```ts
+import nexray from 'api-nexray';
+
 const buffer = await nexray.getBuffer('/maker/brat', {
   text: 'Halo apa kabar...'
 });
