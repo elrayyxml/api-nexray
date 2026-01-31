@@ -21,7 +21,7 @@ interface NexRayError {
 declare const nexray: {
     setOptions(options: NexRayOptions): void;
     get(endpoint: string, params?: Record<string, any>): Promise<NexRayResponse | NexRayError>;
-    post(endpoint: string, data?: Record<string, any>): Promise<NexRayResponse | NexRayError>;
+    post(endpoint: string, data?: Record<string, any>): Promise<NexRayResponse | Buffer | NexRayError>;
     getBuffer(endpoint: string, params?: Record<string, any>): Promise<Buffer | NexRayError>;
 };
 
