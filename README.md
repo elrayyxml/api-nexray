@@ -122,7 +122,9 @@ const response = await nexray.post('/tools/codeconvert', {
 });
 
 console.log(response);
-#or
+
+# or
+
 const buffer = await nexray.post('/ai/nanobanana', {
   image: 'input.jpg', // Path or also directly buffer
   param: 'prompt'
