@@ -73,6 +73,8 @@ import nexray from 'api-nexray';
 
 #### Headers
 ```ts
+import nexray from 'api-nexray';
+
 nexray.setOptions({
   headers: {
   timeout: 30000, // 30 seconds
