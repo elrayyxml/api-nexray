@@ -12,7 +12,7 @@
 
 <p><em>Api NexRay</em></p>
 
-<img src="https://files.catbox.moe/84up1c.jpg" width="300" alt="Cover Banner" />
+<img src="https://files.catbox.moe/ehdrm3.jpg" width="300" alt="Cover" />
 
 </div>
 
