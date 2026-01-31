@@ -107,6 +107,24 @@ const response = await nexray.post('/ai/chatgpt', {
 
 console.log(response);
 ```
+```ts
+import fs from 'fs';
+import path from 'path';
+
+const response = await nexray.post('/tools/codeconvert', {
+  file: 'tes.js',
+  mode: 'esm'
+});
+
+console.log(response);
+#or
+const buffer = await nexray.post('/ai/nanobanana', {
+  image: 'input.jpg', // Path or also directly buffer
+  param: 'prompt'
+});
+
+console.log(buffer);
+```
 
 #### Get Buffer
 ```ts
